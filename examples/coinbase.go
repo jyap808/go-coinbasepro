@@ -16,9 +16,12 @@ func main() {
 	coinbase := coinbase.New(API_KEY, API_SECRET)
 
 	// Get Ticker (btcusd)
-	ticker, err := coinbase.GetPrices("BTC-USD")
-	fmt.Println(err, ticker)
-	fmt.Println("BTC:", ticker.Amount)
+	ticker, err := coinbase.GetBuyPrices("BTC-USD")
+	if err != nil {
+		fmt.Println(err, ticker)
+	} else {
+		fmt.Println("BTC:", ticker.Amount)
+	}
 
 	// Get Distribution (JBS)
 	/* distribution, err := coinbase.GetDistribution("SPHR")

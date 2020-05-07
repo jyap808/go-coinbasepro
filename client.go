@@ -1,4 +1,4 @@
-package coinbase
+package coinbasepro
 
 import (
 	"errors"
@@ -10,14 +10,12 @@ import (
 )
 
 type client struct {
-	apiKey     string
-	apiSecret  string
 	httpClient *http.Client
 }
 
 // NewClient return a new Coinbase HTTP client
-func NewClient(apiKey, apiSecret string) (c *client) {
-	return &client{apiKey, apiSecret, &http.Client{}}
+func NewClient() (c *client) {
+	return &client{&http.Client{}}
 }
 
 // doTimeoutRequest do a HTTP request with timeout
@@ -49,7 +47,7 @@ func (c *client) do(method string, resource string, payload string, authNeeded b
 	if strings.HasPrefix(resource, "http") {
 		rawurl = resource
 	} else {
-		rawurl = fmt.Sprintf("%s%s/%s", API_BASE, API_VERSION, resource)
+		rawurl = fmt.Sprintf("%s%s", API_BASE, resource)
 	}
 
 	req, err := http.NewRequest(method, rawurl, strings.NewReader(payload))
@@ -60,7 +58,6 @@ func (c *client) do(method string, resource string, payload string, authNeeded b
 		req.Header.Add("Content-Type", "application/json;charset=utf-8")
 	}
 	req.Header.Add("Accept", "application/json")
-	req.Header.Add("CB-VERSION", "2017-04-08")
 
 	resp, err := c.doTimeoutRequest(connectTimer, req)
 	if err != nil {
@@ -69,7 +66,6 @@ func (c *client) do(method string, resource string, payload string, authNeeded b
 
 	defer resp.Body.Close()
 	response, err = ioutil.ReadAll(resp.Body)
-	//	fmt.Println(fmt.Sprintf("reponse %s", response), err)
 	if err != nil {
 		return response, err
 	}
