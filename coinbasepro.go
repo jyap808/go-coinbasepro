@@ -6,8 +6,8 @@ import (
 )
 
 const (
-	API_BASE                   = "https://api.pro.coinbase.com/" // Coinbase Pro API endpoint
-	DEFAULT_HTTPCLIENT_TIMEOUT = 30                              // HTTP client timeout
+	API_BASE                   = "https://api.exchange.coinbase.com/" // Coinbase Pro API endpoint
+	DEFAULT_HTTPCLIENT_TIMEOUT = 30                                   // HTTP client timeout
 )
 
 // New return a instanciate coinbase struct
@@ -21,7 +21,7 @@ type CoinbasePro struct {
 	client *client
 }
 
-// https://api.pro.coinbase.com/products/stats
+// https://api.exchange.coinbase.com/products/stats
 func (b *CoinbasePro) GetStats() (stats map[string]Stat, err error) {
 	r, err := b.client.do("GET", "products/stats", "", false)
 	if err != nil {
