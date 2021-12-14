@@ -21,6 +21,23 @@ type CoinbasePro struct {
 	client *client
 }
 
+// https://api.exchange.coinbase.com/currencies
+// Get all known currencies
+func (b *CoinbasePro) GetCurrencies() (currencies []Currency, err error) {
+	r, err := b.client.do("GET", "currencies", "", false)
+	if err != nil {
+		return
+	}
+
+	if err = json.Unmarshal(r, &currencies); err != nil {
+		return
+	}
+	if err != nil {
+		return
+	}
+	return
+}
+
 // https://api.exchange.coinbase.com/products/stats
 func (b *CoinbasePro) GetStats() (stats map[string]Stat, err error) {
 	r, err := b.client.do("GET", "products/stats", "", false)
