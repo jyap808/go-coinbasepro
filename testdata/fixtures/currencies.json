@@ -1,0 +1,52 @@
+[
+  {
+    "id": "OXT",
+    "name": "Orchid",
+    "min_size": "1",
+    "status": "online",
+    "message": "",
+    "max_precision": "0.00000001",
+    "convertible_to": [],
+    "details": {
+      "type": "crypto",
+      "symbol": null,
+      "network_confirmations": 35,
+      "sort_order": 48,
+      "crypto_address_link": "https://etherscan.io/token/0x4575f41308EC1483f3d399aa9a2826d74Da13Deb?a={{address}}",
+      "crypto_transaction_link": "https://etherscan.io/tx/0x{{txId}}",
+      "push_payment_methods": [
+        "crypto"
+      ],
+      "group_types": [],
+      "display_name": null,
+      "processing_time_seconds": null,
+      "min_withdrawal_amount": 0.01,
+      "max_withdrawal_amount": 1250000
+    }
+  },
+  {
+    "id": "IOTX",
+    "name": "IoTeX (ERC-20)",
+    "min_size": "10",
+    "status": "online",
+    "message": "",
+    "max_precision": "1",
+    "convertible_to": [],
+    "details": {
+      "type": "crypto",
+      "symbol": null,
+      "network_confirmations": 35,
+      "sort_order": 197,
+      "crypto_address_link": "https://etherscan.io/token/0x6fb3e0a217407efff7ca062d46c26e5d60a14d69?a={{address}}",
+      "crypto_transaction_link": "https://etherscan.io/tx/0x{{txId}}",
+      "push_payment_methods": [
+        "crypto"
+      ],
+      "group_types": [],
+      "display_name": null,
+      "processing_time_seconds": null,
+      "min_withdrawal_amount": 1e-18,
+      "max_withdrawal_amount": 6544503
+    }
+  }
+]

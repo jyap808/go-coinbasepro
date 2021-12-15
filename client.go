@@ -92,7 +92,7 @@ func (c *Client) do(method string, resource string, payload string, authNeeded b
 	if strings.HasPrefix(resource, "http") {
 		rawurl = resource
 	} else {
-		rawurl = fmt.Sprintf("%s%s", apiURL, resource)
+		rawurl = fmt.Sprintf("%s%s", c.baseURL, resource)
 	}
 
 	req, err := http.NewRequest(method, rawurl, strings.NewReader(payload))
